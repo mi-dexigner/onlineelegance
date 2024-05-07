@@ -22,7 +22,8 @@ const NewArrival = () => {
         </ul>
         <div className="products-items-grid">
         {[...Array(5)].map((_, index) => (
-            <ProductCard key={index} />
+          <ProductCard key={index} id={index} name="Product Name" price={3000} src="https://via.placeholder.com/300x300" sale={true} category={['cate','care2']} />
+
         ))}
         </div>
         </div>

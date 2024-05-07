@@ -24,7 +24,7 @@ export default function Home() {
       <Heading title="TRENDING" content="Top view in this week" />
       <div className="products-items-grid">
         {[...Array(5)].map((_, index:number) => (
-            <ProductCard key={index} />
+            <ProductCard key={index} id={index} name="Product Name" price={3000} src="https://via.placeholder.com/300x300" sale={true} category={['cate','care2']} />
         ))}
         </div>
       </div>
@@ -34,7 +34,8 @@ export default function Home() {
   <Heading title="BEST SELLER" content="Top sale in this week" />
 <div className="products-items-grid">
         {[...Array(5)].map((_, index) => (
-            <ProductCard key={index} />
+         <ProductCard key={index} id={index} name="Product Name" price={3000} src="https://via.placeholder.com/300x300" sale={true} category={['cate','care2']} />
+
         ))}
         </div>
   </div>
