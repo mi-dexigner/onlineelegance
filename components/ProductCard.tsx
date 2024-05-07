@@ -12,7 +12,7 @@ const ProductCard:React.FC<ProductProps> = ({id,name,price,src,category,sale}) =
         <div className="product-item-info">
         <div className="product-item-images">
        <a href="">
-       <Media src="https://via.placeholder.com/300x300" alt="Product Card" width={300} height={300} />
+       <Media src={src} alt="Product Card" width={226} height={300} />
        </a>
         </div>
         <span className="product-label"> <span className="newlabel label-product">New</span></span>
