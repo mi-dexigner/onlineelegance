@@ -46,7 +46,7 @@ const Footer = () => {
         <p>Subscribe to our newsletter and get latest offers and news.</p>
         <form className="form-subscribe" method="post" action="">
             <div className="field-newsletter">
-                <input name="email" type="email" required="" placeholder="Your email address" />
+                <input name="email" type="email" placeholder="Your email address" />
             </div>
             <div className="actions-subscribe">
                 <button type="submit" data-element="subscribe">Subscribe</button>
