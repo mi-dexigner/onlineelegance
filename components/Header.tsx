@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
@@ -8,17 +9,17 @@ const Header = () => {
 <header>
     <div className="container-fluid header-inner">
         <div className="header-logo">
-           <Link href='/'>
-           <img src="/logo.webp" width="200" height="51" />
+           <Link href='/' aria-label="Home">
+           <Image src="/logo.webp" width="200" height="51" alt="Logo" />
            </Link>
         </div>
         <div className="header-nav">
             <ul>
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/shop">Shop</Link></li>
-                <li><Link href="/cart">Cart</Link></li>
-                <li><Link href="/checkout">Checkout</Link></li>
-                <li><Link href="/myaccount">My Account</Link></li>
+                <li><Link href="/" aria-label="Home">Home</Link></li>
+                <li><Link href="/shop" aria-label="Shop">Shop</Link></li>
+                <li><Link href="/cart" aria-label="Cart">Cart</Link></li>
+                <li><Link href="/checkout" aria-label="Checkout">Checkout</Link></li>
+                <li><Link href="/myaccount" aria-label="Account">My Account</Link></li>
             </ul>
         </div>
         <div className="header-action flex">

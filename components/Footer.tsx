@@ -4,7 +4,8 @@ const Footer = () => {
     return ( 
         <footer>
     <div className="container-fluid flex flex-wrap">
-        <div className="col"><h5>Contact Us</h5>
+        <div className="col">
+            <div className="widget-title">Contact Us</div>
         <ul className="footer-address">
             <li><a href="">41, Second Floor, Navjivan Industrial,
                 Society, Near Unique Hospital,
@@ -15,7 +16,7 @@ const Footer = () => {
         </ul>
         </div>
         <div className="col">
-            <h5>Categories</h5>
+            <div className="widget-title">Categories</div>
             <ul className="footer-nav">
                 <li><Link href="shop">Category Name</Link></li>
                 <li><Link href="shop">Category Name</Link></li>
@@ -25,7 +26,8 @@ const Footer = () => {
                 <li><Link href="shop">Category Name</Link></li>
             </ul>
         </div>
-        <div className="col"><h5>Informations</h5>
+        <div className="col">
+            <div className="widget-title">Informations</div>
             <ul className="footer-nav">
                 <li><Link href="shop">About Us</Link></li>
                 <li><Link href="shop">Terms & Conditions</Link></li>
@@ -34,7 +36,8 @@ const Footer = () => {
                 <li><Link href="shop">Privacy Policy</Link></li>
             </ul>
         </div>
-        <div className="col"><h5>Useful Links</h5>
+        <div className="col">
+            <div className="widget-title">Useful Links</div>
             <ul className="footer-nav">
                 <li><Link href="shop">Contact Us</Link></li>
                 <li><Link href="shop">My Account</Link></li>
@@ -42,7 +45,8 @@ const Footer = () => {
                 <li><Link href="shop">FAQs</Link></li>
             </ul>
         </div>
-        <div className="col"><h5>Newsletter Signup</h5>
+        <div className="col">
+            <div className="widget-title">Newsletter Signup</div>
         <p>Subscribe to our newsletter and get latest offers and news.</p>
         <form className="form-subscribe" method="post" action="">
             <div className="field-newsletter">
