@@ -635,6 +635,7 @@ footer .footer-copyright .col:last-child{
 .tabs-items li{
   cursor: pointer;
   transition: all .5s ease-in-out;
+  text-transform: capitalize;
 }
 .tabs-items li:hover,
 .tabs-items li.activeTab{
