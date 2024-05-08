@@ -45,7 +45,7 @@ const HomeCategory:React.FC = () => {
             </a>
             <div className="category--title">
               <a href="#" className="btn">
-                {category.toUpperCase()}
+                {category}
               </a>
             </div>
           </article>
