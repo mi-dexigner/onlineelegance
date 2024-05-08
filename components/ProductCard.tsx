@@ -1,13 +1,13 @@
 import Media from "./Media";
 interface ProductProps{
     id:number,
-    name: string;
+    title: string;
     price: number;
     src: string;
     sale: boolean | undefined;
     category:string[];
 }
-const ProductCard:React.FC<ProductProps> = ({id,name,price,src,category,sale}) => {
+const ProductCard:React.FC<ProductProps> = ({id,title,price,src,category,sale}) => {
     return (<article className="product-item">
         <div className="product-item-info">
         <div className="product-item-images">
@@ -40,7 +40,7 @@ const ProductCard:React.FC<ProductProps> = ({id,name,price,src,category,sale}) =
             </div>
         </div>
         <div className="product-item-details">
-        <div className="product-item-name"><a href="" aria-label="{name}">{name}</a></div>
+        <div className="product-item-name"><a href="" aria-label="{title}">{title}</a></div>
         <div className="product-item-price">
             $30.00
         </div>

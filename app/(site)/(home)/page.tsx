@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import styles from "./page.module.css";
 import HomeCategory from "@/components/HomeCategory";
@@ -6,8 +7,30 @@ import FAQs from "@/components/FAQs";
 import HeroSlide from "@/components/HeroSlide";
 import NewArrival from "@/components/NewArrival";
 import ProductCard from "@/components/ProductCard";
+import { useEffect, useState } from "react";
+
+interface Product {
+  id: number;
+  title: string;
+  image: string;
+}
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]); // Annotate products as Product[]
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(json => {
+        const slicedProducts = json.slice(5, 10);
+        setProducts(slicedProducts);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+        setLoading(false);
+      });
+  }, []);
   const faqs = [
     { title: 'How to use our services?', content: 'Instructions on how to use our services.' },
     { title: 'What payment methods do you accept?', content: 'Information about accepted payment methods.' },
@@ -23,9 +46,17 @@ export default function Home() {
       <div className="container">
       <Heading title="TRENDING" content="Top view in this week" />
       <div className="products-items-grid">
-        {[...Array(5)].map((_, index:number) => (
-            <ProductCard key={index} id={index} name="Product Name" price={3000} src="https://via.placeholder.com/226x300" sale={true} category={['cate','care2']} />
-        ))}
+      {products.map(product => (
+                <ProductCard 
+                  key={product.id} 
+                  id={product.id} 
+                  title={product.title} 
+                  price={3000} 
+                  src={product.image} 
+                  sale={true} 
+                  category={['cate','care2']} 
+                />
+              ))}
         </div>
       </div>
     </section>
@@ -33,10 +64,17 @@ export default function Home() {
   <div className="container">
   <Heading title="BEST SELLER" content="Top sale in this week" />
 <div className="products-items-grid">
-        {[...Array(5)].map((_, index) => (
-         <ProductCard key={index} id={index} name="Product Name" price={3000} src="https://via.placeholder.com/226x300" sale={true} category={['cate','care2']} />
-
-        ))}
+{products.map(product => (
+                <ProductCard 
+                  key={product.id} 
+                  id={product.id} 
+                  title={product.title} 
+                  price={3000} 
+                  src={product.image} 
+                  sale={true} 
+                  category={['cate','care2']} 
+                />
+              ))}
         </div>
   </div>
 </section>

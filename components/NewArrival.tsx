@@ -2,37 +2,42 @@
 import { useEffect, useState } from "react";
 import Heading from "./Heading";
 import ProductCard from "./ProductCard";
-const tabsData:string[] = ['All','Category Name 1','Category Name 2','Category Name 3','Category Name 4']
+
+interface Product {
+  id: number;
+  title: string;
+  image: string;
+}
+
+const tabsData: string[] = ['All','Category Name 1','Category Name 2','Category Name 3','Category Name 4']
+
 const NewArrival = () => {
-    const [selectedTab,setSelectedTab] = useState<number>(0);
-    const [categories, setCategories] = useState([]);
-    const [products, setProducts] = useState([]);
+    const [selectedTab, setSelectedTab] = useState<number>(0);
+    const [categories, setCategories] = useState<string[]>([]); // Assuming categories are strings
+    const [products, setProducts] = useState<Product[]>([]); // Annotate products as Product[]
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/categories')
           .then(res => res.json())
           .then(json => {
-            // Slicing the first 5 products
-            const slicedProducts = json.slice(0, 5);
-            setCategories(slicedProducts);
+            const slicedCategories = json.slice(0, 5);
+            setCategories(slicedCategories);
             setLoading(false);
           })
           .catch(error => {
-            console.error('Error fetching products:', error);
+            console.error('Error fetching categories:', error);
             setLoading(false);
           });
       }, []);  
 
-
-      useEffect(() => {
+    useEffect(() => {
         fetch('https://fakestoreapi.com/products')
           .then(res => res.json())
           .then(json => {
-            // Slicing the first 5 products
             const slicedProducts = json.slice(0, 5);
-        setProducts(slicedProducts);
-        setLoading(false);
+            setProducts(slicedProducts);
+            setLoading(false);
           })
           .catch(error => {
             console.error('Error fetching products:', error);
@@ -43,38 +48,47 @@ const NewArrival = () => {
     const handleTab = (index:number)=>{
         setSelectedTab(index);
     }
-    return (<section>
+    
+    return (
+      <section>
         <div className="container">
-        <Heading title="New Arrival" content="Top view in this week" />
-       {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <ul className="tabs-items">
-            {categories.map((category, index) => (
-        <li key={index} 
-        className={selectedTab === index ? 'activeTab' : ''} 
-        onClick={() => handleTab(index)}
-        >
-            {category}</li>
-        ))}
-        </ul>
-        )}
-
-        
-{loading ? (
-        <div>Loading...</div>
-      ) : (
-        <div className="products-items-grid">
-        {products.map(product => (
-            <>
-            {console.log(product)}
-          <ProductCard key={product.id} id={product.id} name={product.title} price={3000} src={product.image} sale={true} category={['cate','care2']} />
-            </>
-        ))}
+          <Heading title="New Arrival" content="Top view in this week" />
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <ul className="tabs-items">
+              {categories.map((category, index) => (
+                <li 
+                  key={index} 
+                  className={selectedTab === index ? 'activeTab' : ''} 
+                  onClick={() => handleTab(index)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
+          )}
+          
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <div className="products-items-grid">
+              {products.map(product => (
+                <ProductCard 
+                  key={product.id} 
+                  id={product.id} 
+                  title={product.title} 
+                  price={3000} 
+                  src={product.image} 
+                  sale={true} 
+                  category={['cate','care2']} 
+                />
+              ))}
+            </div>
+          )}
         </div>
-      )}
-        </div>
-    </section> );
+      </section>
+    );
 }
- 
+
 export default NewArrival;

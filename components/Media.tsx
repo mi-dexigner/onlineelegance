@@ -15,7 +15,7 @@ const Media:React.FC<MediaProps> = ({ src, alt,width=300,height=300 }) => {
         src={src}
         alt={alt}
         blurDataURL={src}	
-        objectFit="cover"
+        // objectFit="cover"
         width={width}
         height={height}
         
