@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-    webp: true,
+    formats:['image/avif','image/webp'],
     unoptimized: false,
     domains: ["cdn.sanity.io","via.placeholder.com","fakestoreapi.com"],
     contentSecurityPolicy: "default-src 'self'; script-src 'none';",
