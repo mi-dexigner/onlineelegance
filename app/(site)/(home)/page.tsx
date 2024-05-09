@@ -45,6 +45,21 @@ export default function Home() {
     <section className="trending padding-sec">
       <div className="container">
       <Heading title="TRENDING" content="Top view in this week" />
+      {loading ? (
+            <div className="products-items-grid">
+            {[...Array(5)].map((_, index) => (
+                <ProductCard 
+                key={index}
+                id={index}
+                title="Product Name"
+                price={300}
+                src="https://via.placeholder.com/300x300"
+                sale={true}
+                category={['cate','care2']} 
+                />
+            ))}
+            </div>
+          ) :(
       <div className="products-items-grid">
       {products.map(product => (
                 <ProductCard 
@@ -58,11 +73,27 @@ export default function Home() {
                 />
               ))}
         </div>
+          )}
       </div>
     </section>
 <section className="best-seller  padding-sec">
   <div className="container">
   <Heading title="BEST SELLER" content="Top sale in this week" />
+  {loading ? (
+            <div className="products-items-grid">
+            {[...Array(5)].map((_, index) => (
+                <ProductCard 
+                key={index}
+                id={index}
+                title="Product Name"
+                price={300}
+                src="https://via.placeholder.com/300x300"
+                sale={true}
+                category={['cate','care2']} 
+                />
+            ))}
+            </div>
+          ) :(
 <div className="products-items-grid">
 {products.map(product => (
                 <ProductCard 
@@ -76,6 +107,7 @@ export default function Home() {
                 />
               ))}
         </div>
+          )}
   </div>
 </section>
 <Heading title="Happy Customers" />

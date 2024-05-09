@@ -9,7 +9,7 @@ interface Product {
   image: string;
 }
 
-const tabsData: string[] = ['All','Category Name 1','Category Name 2','Category Name 3','Category Name 4']
+const tabsData: string[] = ['Category Name 1','Category Name 2','Category Name 3','Category Name 4']
 
 const NewArrival = () => {
     const [selectedTab, setSelectedTab] = useState<number>(0);
@@ -54,7 +54,15 @@ const NewArrival = () => {
         <div className="container">
           <Heading title="New Arrival" content="Top view in this week" />
           {loading ? (
-            <div>Loading...</div>
+            <ul className="tabs-items">
+            {tabsData.map((text,index)=>(
+        <li key={index} 
+        className={selectedTab === index ? 'activeTab' : ''} 
+        onClick={() => handleTab(index)}
+        >
+            {text}</li>
+        ))}
+        </ul>
           ) : (
             <ul className="tabs-items">
               {categories.map((category, index) => (
@@ -70,7 +78,19 @@ const NewArrival = () => {
           )}
           
           {loading ? (
-            <div>Loading...</div>
+            <div className="products-items-grid">
+            {[...Array(5)].map((_, index) => (
+                <ProductCard 
+                key={index}
+                id={index}
+                title="Product Name"
+                price={300}
+                src="https://via.placeholder.com/300x300"
+                sale={true}
+                category={['cate','care2']} 
+                />
+            ))}
+            </div>
           ) : (
             <div className="products-items-grid">
               {products.map(product => (
