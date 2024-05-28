@@ -194,7 +194,7 @@ a {
 .header-action ul li a{
   text-decoration: none;
 }
-.header-action ul li svg{width: 24px;}
+.header-action .tooltip svg{width: 24px;}
 .header-action .tooltip {
   position: relative;
   display: inline-block;
@@ -658,6 +658,7 @@ footer .footer-copyright .col:last-child{
   display: inline-block;
   padding-left: .5rem;
   padding-right: .5rem;
+  transition: all .5s ease-in-out;
 }
 .product-item-info{
   max-width: 100%;
@@ -668,6 +669,7 @@ footer .footer-copyright .col:last-child{
     overflow: hidden;
     position: relative;
     margin-bottom: 1rem;
+    overflow: hidden;
 }
 .product-item-images img{
   width: 100%;
@@ -696,6 +698,36 @@ footer .footer-copyright .col:last-child{
 }
 .actions-secondary{
   position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.product-item-actions {
+  margin-top: -75px;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+  padding-bottom: .8rem;
+}
+.product-item-inner{
+  position: relative;
+}
+.actions-secondary .header-action{
+  flex: inherit;
+  background-color: var(--white-color);
+  padding: .5rem;
+}
+.actions-secondary .header-action + .header-action{
+  margin-left: .2rem;
+}
+.product-item:hover .product-item-info .product-item-inner .product-item-actions{
+  opacity: 1;
+}
+.product-item:hover .product-item-info .product-item-inner .product-item-actions .actions-secondary a:hover{
+  text-decoration: none;
+  background-color: var(--black-color);
+}
+.product-item:hover .product-item-info .product-item-inner .product-item-actions .actions-secondary a:hover{
+  color: var(--white-color);
 }
 /* product card end */
 
