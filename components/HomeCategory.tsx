@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import Media from "./Media";
+import slugify from "@/utils/slugify";
 
 const HomeCategory: React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
@@ -50,7 +51,7 @@ const HomeCategory: React.FC = () => {
           <div className="home--category-grid">
             {categories.map((category, index) => (
               <article key={`${category}_${index}`}>
-                <a href="">
+                <a href={slugify(category)}>
                   {index === 2 ? (
                     <Media src="https://via.placeholder.com/590x625" alt="Category Name" width={590} height={625} />
                   ) : (
@@ -58,8 +59,8 @@ const HomeCategory: React.FC = () => {
                   )}
                 </a>
                 <div className="category--title">
-                  <a href="#" className="btn">
-                    {category}
+                  <a href={slugify(category)} className="btn">
+                    {category.toUpperCase()}
                   </a>
                 </div>
               </article>
